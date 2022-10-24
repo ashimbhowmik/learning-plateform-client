@@ -7,7 +7,9 @@ import Sidebar from "../Pages/Shared/Sidebar/Sidebar";
 const Main = () => {
   return (
     <div>
-      <Header></Header>
+      <header className="w-[95%] mx-auto">
+        <Header></Header>
+      </header>
       <section className="w-[90%] mx-auto">
         <section className="flex ">
           <div className="w-[80%]">
