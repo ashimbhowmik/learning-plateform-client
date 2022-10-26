@@ -3,9 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import useAuth from "../Hooks/useAuth";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+
+  const { user, logout } = useAuth();
   return (
     <>
       <div className="navbar bg-base-100 ">
@@ -31,46 +34,85 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <Link>Item 1</Link>
-              </li>
-              <li>
-                <Link>Item 1</Link>
-              </li>
-              <li>
-                <Link>Item 1</Link>
-              </li>
-              <li>
-                <Link>Item 3</Link>
-              </li>
+              {user.email ? (
+                <>
+                  <li>
+                    <Link>Home</Link>
+                  </li>
+                  <li>
+                    <Link>Course</Link>
+                  </li>
+                  <li>
+                    <Link>FAQ</Link>
+                  </li>
+                  <li>
+                    <Link>Blog</Link>
+                  </li>
+
+                  <li>
+                    <Link onClick={logout}>Log Out</Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/login">LogIn</Link>
+                  </li>
+                  <li>
+                    <Link to="/signup">SignUp</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <Link className="btn btn-ghost normal-case text-xl">daisyUI</Link>
         </div>
-        <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">
-            <li>
-              <Link>Item 1</Link>
-            </li>
-            <li>
-              <Link>Item 1</Link>
-            </li>
-            <li>
-              <Link>Item 1</Link>
-            </li>
 
-            <li>
-              <Link>Item 3</Link>
-            </li>
-            <li onClick={() => setOpen(!open)} className="h-7 w-7 mt-1">
-              {open ? (
-                <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
-              ) : (
-                <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
-              )}
-            </li>
-          </ul>
-        </div>
+        {user?.email ? (
+          <>
+            <div className="navbar-center hidden lg:flex">
+              <ul className="menu menu-horizontal p-0">
+                <li>
+                  <Link>Home</Link>
+                </li>
+                <li>
+                  <Link>Course</Link>
+                </li>
+                <li>
+                  <Link>FAQ</Link>
+                </li>
+                <li>
+                  <Link>Blog</Link>
+                </li>
+
+                <li>
+                  <Link onClick={logout}>Log Out </Link>
+                </li>
+              </ul>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="navbar-end hidden lg:flex">
+              <ul className="menu menu-horizontal p-0">
+                <li>
+                  <Link to="/login">LogIn</Link>
+                </li>
+                <li>
+                  <Link to="signup">SignUp</Link>
+                </li>
+
+                <li onClick={() => setOpen(!open)} className="h-7 w-7 mt-1">
+                  {open ? (
+                    <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
+                  ) : (
+                    <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
+                  )}
+                </li>
+              </ul>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

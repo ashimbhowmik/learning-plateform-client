@@ -11,11 +11,11 @@ const Main = () => {
         <Header></Header>
       </header>
       <section className="w-[90%] mx-auto">
-        <section className="flex ">
-          <div className="w-[80%]">
+        <section className="lg:flex">
+          <div className="lg:w-[80%]">
             <Outlet></Outlet>
           </div>
-          <div className="w-[20%]">
+          <div className="w-[20%] hidden lg:block">
             <Sidebar></Sidebar>
           </div>
         </section>

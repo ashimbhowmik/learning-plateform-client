@@ -3,6 +3,8 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
+import Course from "../Pages/Course/Course";
+import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -14,12 +16,24 @@ export const routes = createBrowserRouter([
         element: <Login></Login>,
       },
       {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signup",
+        element: <SignUp></SignUp>,
+      },
+      {
         path: "/category/:id",
         element: <Home></Home>,
       },
       {
-        path: "/news/:id",
-        element: <SignUp></SignUp>,
+        path: "/courses",
+        element: (
+          <PrivateRoute>
+            <Course></Course>
+          </PrivateRoute>
+        ),
       },
     ],
   },
