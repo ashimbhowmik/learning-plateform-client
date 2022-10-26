@@ -52,6 +52,23 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
+  // google sign in
+  const signInWithGoogle = (location, navigate) => {
+    setIsLoading(true);
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+
+        setAuthError("");
+        const destination = location?.state?.from || "/courses";
+        navigate(destination);
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+      })
+      .finally(() => setIsLoading(false));
+  };
+
   // login user
   const loginUser = (email, password, location, navigate) => {
     setIsLoading(true);
