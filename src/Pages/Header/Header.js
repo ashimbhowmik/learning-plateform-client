@@ -106,13 +106,32 @@ const Header = () => {
           </>
         )}
         <div className="mr-3">
-          <div onClick={() => setOpen(!open)} className="h-7 w-7 mt-1">
+          <button
+            onClick={() => {
+              setOpen(!open);
+              open
+                ? (localStorage.theme = "dark")
+                : (localStorage.theme = "light");
+
+              // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+              if (
+                localStorage.theme === "dark" ||
+                (!("theme" in localStorage) &&
+                  window.matchMedia("(prefers-color-scheme: dark)").matches)
+              ) {
+                document.documentElement.classList.add("dark");
+              } else {
+                document.documentElement.classList.remove("dark");
+              }
+            }}
+            className="h-7 w-7 mt-1"
+          >
             {open ? (
               <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
             ) : (
               <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
             )}
-          </div>
+          </button>
         </div>
         {user?.photoURL && (
           <div className="avatar online">
