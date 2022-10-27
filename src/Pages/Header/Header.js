@@ -41,13 +41,13 @@ const Header = () => {
                     <Link>Home</Link>
                   </li>
                   <li>
-                    <Link>Course</Link>
+                    <Link to="/courses">Course</Link>
                   </li>
                   <li>
                     <Link>FAQ</Link>
                   </li>
                   <li>
-                    <Link>Blog</Link>
+                    <Link to="/blog">Blog</Link>
                   </li>
 
                   <li>
@@ -77,13 +77,13 @@ const Header = () => {
                   <Link>Home</Link>
                 </li>
                 <li>
-                  <Link>Course</Link>
+                  <Link to="/courses">Course</Link>
                 </li>
                 <li>
                   <Link>FAQ</Link>
                 </li>
                 <li>
-                  <Link>Blog</Link>
+                  <Link to="/blog">Blog</Link>
                 </li>
                 <li className="mr-2">
                   <Link onClick={logout}>Log Out </Link>
