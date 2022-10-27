@@ -1,9 +1,11 @@
 import { useLoaderData } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const Premimu = () => {
   const singleCourseDetails = useLoaderData();
   console.log(singleCourseDetails);
-  const { title, details, img, id, price } = singleCourseDetails;
+  const { title, img, id, price } = singleCourseDetails;
   //   const { id } = useParams();
 
   //   const [SingleCourse, setSingleCourse] = useState([]);
@@ -17,8 +19,8 @@ const Premimu = () => {
   //       });
   //   }, [id]);
   return (
-    <div>
-      <div className="card w-96 bg-base-100 shadow-xl image-full b">
+    <div className="bg-slate-400 py-[100px] mt-8 mb-8">
+      <div className="card w-96 bg-base-100 shadow-xl image-full mx-auto my-20">
         <figure>
           <img src={img} alt="" />
         </figure>
@@ -27,15 +29,31 @@ const Premimu = () => {
           <h1 className="text-slate-400 text-xl font-bold">Price : {price}$</h1>
           <h1 className="text-slate-400  font-bold">Course ID : {id}</h1>
           <div className="flex justify-between mt-[200px]">
-            <button className="p-3 bg-red-500 hover:bg-orange-500 text-white font-bold rounded-xl">
+            <button
+              onClick={() => {
+                toast.success("You have successfully buy this course", {
+                  theme: "colored",
+                });
+              }}
+              className="p-3 bg-red-500 hover:bg-orange-500 text-white font-bold rounded-xl"
+            >
               Buy Course
             </button>
-            <button className="p-3 bg-red-500 hover:bg-orange-500 text-white font-bold rounded-xl">
+
+            <button
+              onClick={() => {
+                toast.error("Cancelled", {
+                  theme: "colored",
+                });
+              }}
+              className="p-3 bg-red-500 hover:bg-orange-500 text-white font-bold rounded-xl"
+            >
               Cancel
             </button>
           </div>
         </div>
       </div>
+      <ToastContainer position="top-center" />
     </div>
   );
 };

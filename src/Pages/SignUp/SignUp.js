@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../ContextAPI/AuthProvider/AuthProvider";
 import useAuth from "../Hooks/useAuth";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const handleSignup = (name, email, password, photo, registerUser, navigate) => {
   registerUser(email, password, name, navigate, photo);
@@ -56,7 +56,9 @@ const SignUp = () => {
                     navigate
                   );
                 } else {
-                  alert("Password mismatch!");
+                  toast.error("Miss Match Password", {
+                    theme: "colored",
+                  });
                 }
               }}
             >
@@ -206,6 +208,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <ToastContainer position="top-center" />
     </div>
   );
 };

@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const handleLogin = (email, password, loginUser, location, navigate) => {
   loginUser(email, password, location, navigate);
@@ -110,15 +112,10 @@ const Login = () => {
                       </div>
                     </>
                   )}
-                  {user?.photoURL && (
-                    <div className="toast toast-top toast-end">
-                      <div className="alert alert-success">
-                        <div>
-                          <span>Login Successfully</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  {user?.photoURL &&
+                    toast.error("Successfully Login", {
+                      theme: "colored",
+                    })}
                 </>
 
                 {authError && (
@@ -167,6 +164,7 @@ const Login = () => {
           </div>
         </div>
       </section>
+      <ToastContainer position="top-center" />
     </>
   );
 };
