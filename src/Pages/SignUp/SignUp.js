@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../ContextAPI/AuthProvider/AuthProvider";
 import useAuth from "../Hooks/useAuth";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const handleSignup = (name, email, password, registerUser, navigate) => {
   registerUser(email, password, name, navigate);
@@ -80,6 +81,14 @@ const SignUp = () => {
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Sign In</button>
+              </div>
+              <div className="flex mx-auto mt-4 mb-2 ">
+                <button>
+                  <FaGoogle className="w-7 h-7 mr-3"></FaGoogle>
+                </button>
+                <button>
+                  <FaGithub className="w-7 h-7 ml-3"></FaGithub>
+                </button>
               </div>
 
               <>

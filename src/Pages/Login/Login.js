@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const handleLogin = (email, password, loginUser, location, navigate) => {
   loginUser(email, password, location, navigate);
@@ -126,6 +127,14 @@ const Login = () => {
                 )}
                 <div className="form-control mt-6">
                   <button className="btn btn-primary">Login</button>
+                </div>
+                <div className="flex mx-auto mt-4 mb-2 ">
+                  <button>
+                    <FaGoogle className="w-7 h-7 mr-3"></FaGoogle>
+                  </button>
+                  <button>
+                    <FaGithub className="w-7 h-7 ml-3"></FaGithub>
+                  </button>
                 </div>
               </form>
             </div>

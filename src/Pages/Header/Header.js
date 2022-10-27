@@ -9,6 +9,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   const { user, logout } = useAuth();
+
   return (
     <>
       <div className="navbar bg-base-100 ">
@@ -34,7 +35,7 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              {user.email ? (
+              {user?.email ? (
                 <>
                   <li>
                     <Link>Home</Link>
