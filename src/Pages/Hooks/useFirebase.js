@@ -29,17 +29,18 @@ const useFirebase = () => {
   const googleProvider = new GoogleAuthProvider();
 
   // register new user
-  const registerUser = (email, password, name, navigate) => {
+  const registerUser = (email, password, name, navigate, photo) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setAuthError("");
-        const newUser = { email, displayName: name };
+        const newUser = { email, displayName: name, photoURL: photo };
         setUser(newUser);
 
         // send name to firebase after creation
         updateProfile(auth.currentUser, {
           displayName: name,
+          photoURL: photo,
         })
           .then(() => {})
           .catch((error) => {});
@@ -110,7 +111,15 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
-  return { registerUser, loginUser, logout, user, isLoading, authError };
+  return {
+    registerUser,
+    loginUser,
+    logout,
+    user,
+    isLoading,
+    authError,
+    signInWithGoogle,
+  };
 };
 
 export default useFirebase;

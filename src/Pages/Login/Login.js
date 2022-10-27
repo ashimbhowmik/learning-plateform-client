@@ -11,6 +11,10 @@ const Login = () => {
   const { signInWithGoogle, loginUser, isLoading, authError, user } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const handelGoogleSignUp = (signInWithGoogle, location, navigate) => {
+    signInWithGoogle(location, navigate);
+  };
+
   return (
     <>
       <section>
@@ -128,15 +132,19 @@ const Login = () => {
                 <div className="form-control mt-6">
                   <button className="btn btn-primary">Login</button>
                 </div>
-                <div className="flex mx-auto mt-4 mb-2 ">
-                  <button>
-                    <FaGoogle className="w-7 h-7 mr-3"></FaGoogle>
-                  </button>
-                  <button>
-                    <FaGithub className="w-7 h-7 ml-3"></FaGithub>
-                  </button>
-                </div>
               </form>
+              <div className="flex mx-auto mt-4 mb-2 ">
+                <button
+                  onClick={() =>
+                    handelGoogleSignUp(signInWithGoogle, location, navigate)
+                  }
+                >
+                  <FaGoogle className="w-7 h-7 mr-3"></FaGoogle>
+                </button>
+                <button>
+                  <FaGithub className="w-7 h-7 ml-3"></FaGithub>
+                </button>
+              </div>
             </div>
           </div>
         </div>

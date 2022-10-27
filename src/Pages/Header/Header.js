@@ -114,11 +114,13 @@ const Header = () => {
             )}
           </div>
         </div>
-        <div className="avatar online">
-          <div className="w-12 rounded-full">
-            <img src="https://placeimg.com/192/192/people" alt="" />
+        {user?.photoURL && (
+          <div className="avatar online">
+            <div className="w-12 rounded-full">
+              <img src={user?.photoURL} alt="" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

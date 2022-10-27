@@ -1,17 +1,21 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../ContextAPI/AuthProvider/AuthProvider";
 import useAuth from "../Hooks/useAuth";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 
-const handleSignup = (name, email, password, registerUser, navigate) => {
-  registerUser(email, password, name, navigate);
+const handleSignup = (name, email, password, photo, registerUser, navigate) => {
+  registerUser(email, password, name, navigate, photo);
+};
+const handelGoogleSignUp = (signInWithGoogle, location, navigate) => {
+  signInWithGoogle(location, navigate);
 };
 
 const SignUp = () => {
   const { user, registerUser, authError, isLoading, signInWithGoogle } =
     useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <div>
       <div className=" bg-base-200">
@@ -24,11 +28,19 @@ const SignUp = () => {
                 e.preventDefault();
                 const name = e.target.name.value;
                 const email = e.target.email.value;
+                const photo = e.target.photo.value;
                 const password = e.target.password.value;
                 const confirm = e.target.confirm.value;
 
                 if (password === confirm) {
-                  handleSignup(name, email, password, registerUser, navigate);
+                  handleSignup(
+                    name,
+                    email,
+                    password,
+                    photo,
+                    registerUser,
+                    navigate
+                  );
                 } else {
                   alert("Password mismatch!");
                 }
@@ -59,6 +71,18 @@ const SignUp = () => {
               </div>
               <div className="form-control">
                 <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  name="photo"
+                  type="text"
+                  placeholder="photo url"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
@@ -79,18 +103,9 @@ const SignUp = () => {
                   className="input input-bordered"
                 />
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control mt-6 ">
                 <button className="btn btn-primary">Sign In</button>
               </div>
-              <div className="flex mx-auto mt-4 mb-2 ">
-                <button>
-                  <FaGoogle className="w-7 h-7 mr-3"></FaGoogle>
-                </button>
-                <button>
-                  <FaGithub className="w-7 h-7 ml-3"></FaGithub>
-                </button>
-              </div>
-
               <>
                 {isLoading && (
                   <>
@@ -157,6 +172,19 @@ const SignUp = () => {
                 </small>
               </p>
             </form>
+
+            <div className="flex mx-auto mt-4 mb-2 ">
+              <button
+                onClick={() =>
+                  handelGoogleSignUp(signInWithGoogle, location, navigate)
+                }
+              >
+                <FaGoogle className="w-7 h-7 mr-3"></FaGoogle>
+              </button>
+              <button>
+                <FaGithub className="w-7 h-7 ml-3"></FaGithub>
+              </button>
+            </div>
           </div>
         </div>
       </div>
