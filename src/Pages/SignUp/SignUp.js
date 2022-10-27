@@ -34,7 +34,7 @@ const SignUp = () => {
     <div>
       <div className=" bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse ">
-          <div className="card w-[45%]  my-14 shadow-2xl bg-base-100 ">
+          <div className="card lg:w-[45%]  my-14 shadow-2xl bg-base-100 ">
             <h1 className="text-center text-3xl mt-6">Sign Up</h1>
             <form
               className="card-body"

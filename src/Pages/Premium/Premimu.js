@@ -6,18 +6,7 @@ const Premimu = () => {
   const singleCourseDetails = useLoaderData();
   console.log(singleCourseDetails);
   const { title, img, id, price } = singleCourseDetails;
-  //   const { id } = useParams();
 
-  //   const [SingleCourse, setSingleCourse] = useState([]);
-  //   console.log(SingleCourse);
-
-  //   useEffect(() => {
-  //     fetch(`http://localhost:5000/courses/${id}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setSingleCourse(data);
-  //       });
-  //   }, [id]);
   return (
     <div className="bg-slate-400 py-[100px] mt-8 mb-8">
       <div className="card w-96 bg-base-100 shadow-xl image-full mx-auto my-20">

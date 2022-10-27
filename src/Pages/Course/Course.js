@@ -4,7 +4,7 @@ import CourseCart from "../CourseDetails/CourseCart";
 
 const Course = () => {
   const allCourses = useLoaderData();
-  // console.log(allCourses);
+
   return (
     <div className="grid grid-cols-3">
       {allCourses.map((course) => (

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
+import img3 from "./../../Pages/Media/logo.png";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -66,9 +67,12 @@ const Header = () => {
               )}
             </ul>
           </div>
-          <Link className="btn btn-ghost normal-case text-xl font-bold">
+          <div className="">
+            <img className="w-7 h-7" src={img3} alt="" />
+          </div>
+          <div className="btn btn-ghost normal-case text-xl font-bold">
             Learning Platform
-          </Link>
+          </div>
         </div>
 
         {user?.photoURL ? (
