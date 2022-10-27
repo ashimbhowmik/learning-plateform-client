@@ -71,7 +71,7 @@ const Header = () => {
 
         {user?.email ? (
           <>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-end hidden lg:flex">
               <ul className="menu menu-horizontal p-0">
                 <li>
                   <Link>Home</Link>
@@ -85,8 +85,7 @@ const Header = () => {
                 <li>
                   <Link>Blog</Link>
                 </li>
-
-                <li>
+                <li className="mr-2">
                   <Link onClick={logout}>Log Out </Link>
                 </li>
               </ul>
@@ -99,21 +98,27 @@ const Header = () => {
                 <li>
                   <Link to="/login">LogIn</Link>
                 </li>
-                <li>
+                <li className="mr-3">
                   <Link to="signup">SignUp</Link>
-                </li>
-
-                <li onClick={() => setOpen(!open)} className="h-7 w-7 mt-1">
-                  {open ? (
-                    <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
-                  ) : (
-                    <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
-                  )}
                 </li>
               </ul>
             </div>
           </>
         )}
+        <div className="mr-3">
+          <div onClick={() => setOpen(!open)} className="h-7 w-7 mt-1">
+            {open ? (
+              <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
+            ) : (
+              <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
+            )}
+          </div>
+        </div>
+        <div className="avatar online">
+          <div className="w-12 rounded-full">
+            <img src="https://placeimg.com/192/192/people" alt="" />
+          </div>
+        </div>
       </div>
     </>
   );

@@ -13,7 +13,7 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Login></Login>,
+        element: <Home></Home>,
       },
       {
         path: "/login",
@@ -24,16 +24,13 @@ export const routes = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
       {
-        path: "/courses/:id",
-        element: <Home></Home>,
-      },
-      {
         path: "/courses",
         element: (
           <PrivateRoute>
             <Course></Course>
           </PrivateRoute>
         ),
+        loader: () => fetch("http://localhost:5000/courses"),
       },
     ],
   },
