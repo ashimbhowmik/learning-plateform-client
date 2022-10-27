@@ -10,6 +10,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   const { user, logout } = useAuth();
+  console.log(user);
 
   return (
     <>
@@ -74,7 +75,6 @@ const Header = () => {
             Learning Platform
           </div>
         </div>
-
         {user?.photoURL ? (
           <>
             <div className="navbar-end hidden lg:flex">
@@ -111,7 +111,7 @@ const Header = () => {
             </div>
           </>
         )}
-        <div className="mr-3">
+        <div className="mr-3 hidden lg:block">
           <button
             onClick={() => {
               setOpen(!open);
@@ -139,9 +139,14 @@ const Header = () => {
             )}
           </button>
         </div>
+
         {user?.photoURL && (
-          <div className="avatar online">
-            <div className="w-12 rounded-full">
+          <div className="avatar online hidden lg:block ">
+            <div
+              className="w-12 rounded-full tooltip tooltip-bottom"
+              data-tip={user?.displayName}
+              title={user?.displayName}
+            >
               <img src={user?.photoURL} alt="" />
             </div>
           </div>

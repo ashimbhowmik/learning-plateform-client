@@ -8,8 +8,8 @@ const Premimu = () => {
   const { title, img, id, price } = singleCourseDetails;
 
   return (
-    <div className="bg-slate-400 py-[100px] mt-8 mb-8">
-      <div className="card w-96 bg-base-100 shadow-xl image-full mx-auto my-20">
+    <div className="bg-slate-400 lg:py-[100px] p-4 lg:p-0 mt-8 mb-8">
+      <div className="card lg:w-96 bg-base-100 shadow-xl image-full mx-auto my-20">
         <figure>
           <img src={img} alt="" />
         </figure>

@@ -35,7 +35,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/faq",
-        element: <Faq></Faq>,
+        element: (
+          <PrivateRoute>
+            <Faq></Faq>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/blog",
