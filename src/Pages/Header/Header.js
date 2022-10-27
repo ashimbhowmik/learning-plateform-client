@@ -66,7 +66,9 @@ const Header = () => {
               )}
             </ul>
           </div>
-          <Link className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+          <Link className="btn btn-ghost normal-case text-xl font-bold">
+            Learning Platform
+          </Link>
         </div>
 
         {user?.photoURL ? (
