@@ -6,11 +6,13 @@ import Home from "../Pages/Home/Home";
 import Course from "../Pages/Course/Course";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 import Blog from "../Pages/Blog/Blog";
+import Error from "../Pages/Error/Error";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
