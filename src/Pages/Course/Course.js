@@ -4,9 +4,9 @@ import CourseCart from "../CourseDetails/CourseCart";
 
 const Course = () => {
   const allCourses = useLoaderData();
+  // console.log(allCourses);
   return (
-    <div>
-      <h2>Dragon News Home: {allCourses.length}</h2>
+    <div className="grid grid-cols-3">
       {allCourses.map((course) => (
         <CourseCart key={course.id} course={course}></CourseCart>
       ))}

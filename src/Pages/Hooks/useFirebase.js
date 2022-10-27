@@ -9,6 +9,7 @@ import {
   signInWithPopup,
   updateProfile,
   signOut,
+  GithubAuthProvider,
 } from "firebase/auth";
 import firebaseAuthentication from "../Firebase/FirebaseInit";
 
@@ -27,6 +28,7 @@ const useFirebase = () => {
 
   // google auth
   const googleProvider = new GoogleAuthProvider();
+  const gitProvider = new GithubAuthProvider();
 
   // register new user
   const registerUser = (email, password, name, navigate, photo) => {
@@ -60,6 +62,27 @@ const useFirebase = () => {
       .then((result) => {
         const user = result.user;
 
+        setAuthError("");
+        const destination = location?.state?.from || "/courses";
+        navigate(destination);
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  //github sign in
+
+  const githubSignIn = (location, navigate) => {
+    setIsLoading(true);
+    signInWithPopup(auth, gitProvider)
+      .then((result) => {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
         setAuthError("");
         const destination = location?.state?.from || "/courses";
         navigate(destination);
@@ -119,6 +142,7 @@ const useFirebase = () => {
     isLoading,
     authError,
     signInWithGoogle,
+    githubSignIn,
   };
 };
 

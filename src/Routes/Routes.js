@@ -7,6 +7,9 @@ import Course from "../Pages/Course/Course";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 import Blog from "../Pages/Blog/Blog";
 import Error from "../Pages/Error/Error";
+import SingleCourse from "../Pages/SingleCourse/SingleCourse";
+import Premimu from "../Pages/Premium/Premimu";
+import Faq from "../Pages/Faq/Faq";
 
 export const routes = createBrowserRouter([
   {
@@ -19,12 +22,20 @@ export const routes = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/home",
+        element: <Home></Home>,
+      },
+      {
         path: "/login",
         element: <Login></Login>,
       },
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/faq",
+        element: <Faq></Faq>,
       },
       {
         path: "/blog",
@@ -42,6 +53,26 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch("http://localhost:5000/courses"),
+      },
+      {
+        path: "/courseDetails/:id",
+        element: (
+          <PrivateRoute>
+            <SingleCourse></SingleCourse>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/courses/${params.id}`),
+      },
+      {
+        path: "/premiumAccess/:id",
+        element: (
+          <PrivateRoute>
+            <Premimu></Premimu>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/courses/${params.id}`),
       },
     ],
   },

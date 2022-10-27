@@ -35,16 +35,16 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              {user?.email ? (
+              {user?.photoURL ? (
                 <>
                   <li>
-                    <Link>Home</Link>
+                    <Link to="/home">Home</Link>
                   </li>
                   <li>
                     <Link to="/courses">Course</Link>
                   </li>
                   <li>
-                    <Link>FAQ</Link>
+                    <Link to="/faq">FAQ</Link>
                   </li>
                   <li>
                     <Link to="/blog">Blog</Link>
@@ -69,18 +69,18 @@ const Header = () => {
           <Link className="btn btn-ghost normal-case text-xl">daisyUI</Link>
         </div>
 
-        {user?.email ? (
+        {user?.photoURL ? (
           <>
             <div className="navbar-end hidden lg:flex">
               <ul className="menu menu-horizontal p-0">
                 <li>
-                  <Link>Home</Link>
+                  <Link to="/home">Home</Link>
                 </li>
                 <li>
                   <Link to="/courses">Course</Link>
                 </li>
                 <li>
-                  <Link>FAQ</Link>
+                  <Link to="/faq">FAQ</Link>
                 </li>
                 <li>
                   <Link to="/blog">Blog</Link>

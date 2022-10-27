@@ -27,7 +27,7 @@ const PrivateRoute = ({ children, ...rest }) => {
       </div>
     );
   }
-  if (user.email) {
+  if (user.photoURL) {
     return children;
   }
   return <Navigate to="/login" state={{ from: location }} />;

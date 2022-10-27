@@ -7,13 +7,27 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 const handleSignup = (name, email, password, photo, registerUser, navigate) => {
   registerUser(email, password, name, navigate, photo);
 };
+
+//google
+
 const handelGoogleSignUp = (signInWithGoogle, location, navigate) => {
   signInWithGoogle(location, navigate);
 };
 
+//github
+const handleGithubSignUp = (githubSignIn, location, navigate) => {
+  githubSignIn(location, navigate);
+};
+
 const SignUp = () => {
-  const { user, registerUser, authError, isLoading, signInWithGoogle } =
-    useAuth();
+  const {
+    user,
+    registerUser,
+    authError,
+    isLoading,
+    signInWithGoogle,
+    githubSignIn,
+  } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   return (
@@ -129,7 +143,7 @@ const SignUp = () => {
                     </div>
                   </>
                 )}
-                {user?.email && (
+                {user?.photoURL && (
                   <div className="toast toast-top toast-end">
                     <div className="alert alert-success">
                       <div>
@@ -181,7 +195,11 @@ const SignUp = () => {
               >
                 <FaGoogle className="w-7 h-7 mr-3"></FaGoogle>
               </button>
-              <button>
+              <button
+                onClick={() =>
+                  handleGithubSignUp(githubSignIn, location, navigate)
+                }
+              >
                 <FaGithub className="w-7 h-7 ml-3"></FaGithub>
               </button>
             </div>

@@ -8,11 +8,25 @@ const handleLogin = (email, password, loginUser, location, navigate) => {
 };
 
 const Login = () => {
-  const { signInWithGoogle, loginUser, isLoading, authError, user } = useAuth();
+  const {
+    signInWithGoogle,
+    loginUser,
+    isLoading,
+    authError,
+    user,
+    githubSignIn,
+  } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+
+  //google
   const handelGoogleSignUp = (signInWithGoogle, location, navigate) => {
     signInWithGoogle(location, navigate);
+  };
+
+  //github
+  const handleGithubSignUp = (githubSignIn, location, navigate) => {
+    githubSignIn(location, navigate);
   };
 
   return (
@@ -96,7 +110,7 @@ const Login = () => {
                       </div>
                     </>
                   )}
-                  {user?.email && (
+                  {user?.photoURL && (
                     <div className="toast toast-top toast-end">
                       <div className="alert alert-success">
                         <div>
@@ -141,7 +155,11 @@ const Login = () => {
                 >
                   <FaGoogle className="w-7 h-7 mr-3"></FaGoogle>
                 </button>
-                <button>
+                <button
+                  onClick={() =>
+                    handleGithubSignUp(githubSignIn, location, navigate)
+                  }
+                >
                   <FaGithub className="w-7 h-7 ml-3"></FaGithub>
                 </button>
               </div>
